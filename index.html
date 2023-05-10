@@ -10,7 +10,13 @@
     </head>
     <body>
         <header class="header">
-
+            <div class="left">
+                <div class="icon"></div>
+                <h1 class="title">
+                    Yadola's Library
+                </h1>
+            </div>
+            <button class="action">Add Book +</button>
         </header>
         <main class="content">
             <div class="book-grid">
@@ -190,5 +196,32 @@
                 <a href="https://github.com/Ya-dola">Aadil Edition</a>
             </div>
         </footer>
+        <div class="modal">
+            <form class="form-modal add-book" id="addBookForm" action="#">
+                <h3 class="title">Add New Book</h3>
+                <div class="input-div">
+                    <input type="text" id="input-title" name="input-title"
+                           maxlength="50" required>
+                    <label for="input-title">Title</label>
+                </div>
+                <div class="input-div">
+                    <input type="text" id="input-author" name="input-author"
+                           maxlength="50" required>
+                    <label for="input-title">Author</label>
+                </div>
+                <div class="input-div">
+                    <input type="number" id="input-pages" name="input-pages"
+                           maxlength="10000" required>
+                    <label for="input-title">Pages</label>
+                </div>
+                <div class="input-qs">
+                    <label for="input-is-read">Have you read it?</label>
+                    <input class="input-checkbox" type="checkbox"
+                           id="input-is-read" name="input-is-read" required>
+                </div>
+                <button class="action" type="submit">Add Book</button>
+            </form>
+            <div class="overlay" id="overlay"></div>
+        </div>
     </body>
 </html>

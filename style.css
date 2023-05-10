@@ -55,9 +55,11 @@
 
     --pic-default-wh: 4rem;
 
+    --url-icon: url(books.png);
+
     --icon-default-wh: 2.4rem;
     --icon-big-wh: 3rem;
-    --icon-huge-wh: 4rem;
+    --icon-huge-wh: 5rem;
 
     --shadow-header: 0 10px 14px -3px rgba(0, 0, 0, 0.125),
     0 4px 6px -4px rgba(0, 0, 0, 0.1);
@@ -115,6 +117,7 @@ button {
     outline: none;
     background: none;
     cursor: pointer;
+    transition: all 0.12s ease-in-out;
 }
 
 button.action {
@@ -127,6 +130,14 @@ button.action {
     box-shadow: var(--shadow-btn);
 }
 
+button.action:hover {
+    transform: translateY(-4%);
+}
+
+button.action:active {
+    transform: translateY(6%);
+}
+
 button.status {
     background-color: var(--green);
     color: var(--txt-light);
@@ -136,7 +147,14 @@ button.status {
     border-radius: 4rem 4rem 0 0;
     box-shadow: var(--shadow-btn-status);
     height: 8rem;
-    /*TODO - Add Transition*/
+}
+
+button.status:hover {
+    filter: brightness(90%);
+}
+
+button.status:active {
+    transform: translateY(6%);
 }
 
 button.red {
@@ -149,6 +167,24 @@ button.red {
     padding: 1.5rem 4rem;
     background-color: var(--background-header-card);
     box-shadow: var(--shadow-header);
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 14rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .left {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 3rem;
+    align-items: center;
+}
+
+.header .icon {
+    background: var(--url-icon) center center / cover no-repeat;
+    height: var(--icon-huge-wh);
+    aspect-ratio: 1 / 1;
 }
 
 .content {
@@ -208,4 +244,37 @@ button.red {
 .footer a {
     text-decoration: underline;
     color: var(--txt-dark);
+}
+
+.input-div {
+    position: relative;
+    width: 40%;
+    margin-bottom: 1.4vmax;
+}
+
+.input-div input {
+    width: 100%;
+    padding: 0.75vh 0;
+    /*font-size: var(--size-form-input);*/
+    border: none;
+    border-bottom: 1px solid var(--txt-dark);
+    outline: none;
+    background: transparent;
+}
+
+.input-div label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.75vh 0;
+    /*font-size: var(--size-form-label);*/
+    color: var(--txt-dark);
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.input-div input:focus ~ label,
+.input-div input:valid ~ label {
+    top: -1.6vmax;
+    left: 0;
 }
