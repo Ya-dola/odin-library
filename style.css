@@ -78,3 +78,88 @@
     margin: 0;
     /*border: 1px var(--red3) solid;*/
 }
+
+/*Elements*/
+body {
+    min-height: 100vh;
+    height: 100vh; /*Forces scrolling on Overflowing Areas*/
+    min-width: 100vw;
+    width: 100vw; /*Forces scrolling on Overflowing Areas*/
+    background: var(--background);
+    color: var(--txt-dark);
+    font-family: Lato, sans-serif;
+    font-size: var(--size-txt);
+    display: grid;
+    grid-template: auto 1fr min-content / 1fr;
+    grid-template-areas:
+            'header'
+            'content'
+            'footer';
+}
+
+button {
+    border: none;
+    appearance: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+button.action {
+    background-color: var(--clr-btn);
+    color: var(--txt-light);
+    font-size: var(--size-button);
+    font-weight: 700;
+    padding: 0.75rem 2.3rem;
+    border-radius: 99rem;
+    box-shadow: var(--shadow-btn);
+}
+
+/*Classes*/
+.header {
+    grid-area: header;
+    padding: 1.5rem 4rem;
+    background-color: var(--background-header-card);
+    box-shadow: var(--shadow-header);
+}
+
+.content {
+    grid-area: content;
+    overflow: auto; /*Forces scrolling on Overflowing Areas*/
+    padding: 2rem;
+}
+
+.content .book-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 260px;
+}
+
+.content .card {
+    background-color: var(--background-header-card);
+    box-shadow: var(--shadow-card);
+    padding: 1.4rem;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.6rem;
+}
+
+.content .card .title {
+    padding-bottom: 0.4rem;
+}
+
+.footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    font-size: var(--size-footers);
+    background-color: var(--clr-footer);
+}
+
+.footer a {
+    text-decoration: underline;
+    color: var(--txt-dark);
+}
