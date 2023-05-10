@@ -1,0 +1,80 @@
+:root {
+    /*Dola Colour Palette*/
+    --blue: #2d70de;
+    --green: #14b8a6;
+    --red1: #ff5454;
+    --red2: #f87171;
+    --red3: #ff5757;
+    --orange1: #ff9a7c;
+    --orange2: #ffb099;
+    --orange3: #fdba74;
+    --orange4: #ff9f87;
+    --purple: #9482ed;
+    --white1: #eaeaea;
+    --white2: #e6e9ec;
+    --gray1: #dddfe4;
+    --gray2: #c7ccd2;
+    --gray3: #d4d6da;
+    --dark1: #3d3d3d;
+    --dark2: #2a2a2a;
+
+    --background: var(--gray1);
+    --background-header-card: var(--white2);
+    --background-pic: var(--orange1);
+    --background-sidebar: var(--blue);
+
+    --txt-light: var(--white1);
+    --txt-dark: var(--dark2);
+    --txt-btn: var(--dark1);
+    --txt-error: var(--red1);
+
+    --clr-btn: var(--blue);
+    --clr-svg: var(--dark1);
+    --clr-search-bar: var(--gray3);
+    --clr-search-outline: var(--blue);
+    --clr-sidebar-svg: var(--white1);
+    --clr-card-border: var(--orange4);
+    --clr-anncmnt-sep: var(--red2);
+    --clr-trending-sep: var(--gray2);
+    --clr-footer: var(--orange2);
+
+    --size-heading: 5rem;
+    --size-txt: 1.125rem;
+    --size-header-account: 1.4rem;
+    --size-header-name: 1.6rem;
+    --size-sidebar-title: 1.75rem;
+    --size-sidebar-links: 1.25rem;
+    --size-sidebar-links-active: 1.5rem;
+    --size-footers: 1rem;
+    --size-button: 1.3rem;
+
+    --weight-light: 300;
+
+    --gap-sidebar: 1.2rem;
+    --gap-trending: 1rem;
+
+    --pic-default-wh: 4rem;
+
+    --icon-default-wh: 2.4rem;
+    --icon-big-wh: 3rem;
+    --icon-huge-wh: 4rem;
+
+    --shadow-header: 0 10px 14px -3px rgba(0, 0, 0, 0.125),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-card: 0 4px 6px 2px rgba(0, 0, 0, 0.125),
+    0 4px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-sidebar: 6px 0 12px -2px rgba(0, 0, 0, 0.15),
+    4px 0 6px -2px rgba(0, 0, 0, 0.2);
+    --shadow-btn: 0 0 4px 4px rgba(0, 0, 0, 0.1),
+    0 4px 4px -2px rgba(0, 0, 0, 0.125);
+    --shadow-pic: 0 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /*border: 1px var(--red3) solid;*/
+}
