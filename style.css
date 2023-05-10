@@ -67,6 +67,8 @@
     4px 0 6px -2px rgba(0, 0, 0, 0.2);
     --shadow-btn: 0 0 4px 4px rgba(0, 0, 0, 0.1),
     0 4px 4px -2px rgba(0, 0, 0, 0.125);
+    --shadow-btn-status: 0 0 4px 4px rgba(0, 0, 0, 0.1),
+    0 -3px 4px -2px rgba(0, 0, 0, 0.125);
     --shadow-pic: 0 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -97,6 +99,16 @@ body {
             'footer';
 }
 
+svg {
+    height: 2rem;
+    width: 2rem;
+    aspect-ratio: 1/1;
+}
+
+svg path {
+    fill: var(--clr-svg);
+}
+
 button {
     border: none;
     appearance: none;
@@ -113,6 +125,22 @@ button.action {
     padding: 0.75rem 2.3rem;
     border-radius: 99rem;
     box-shadow: var(--shadow-btn);
+}
+
+button.status {
+    background-color: var(--green);
+    color: var(--txt-light);
+    font-size: var(--size-button);
+    font-weight: 700;
+    padding: 0.75rem 2.3rem;
+    border-radius: 4rem 4rem 0 0;
+    box-shadow: var(--shadow-btn-status);
+    height: 8rem;
+    /*TODO - Add Transition*/
+}
+
+button.red {
+    background-color: var(--red1);
 }
 
 /*Classes*/
@@ -132,18 +160,36 @@ button.action {
 .content .book-grid {
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-auto-rows: 260px;
 }
 
 .content .card {
     background-color: var(--background-header-card);
     box-shadow: var(--shadow-card);
-    padding: 1.4rem;
     border-radius: 0.8rem;
     display: flex;
     flex-flow: column nowrap;
+    justify-content: space-between;
     gap: 0.6rem;
+}
+
+.content .card .trash {
+    align-self: flex-start;
+}
+
+.card .info {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 1.4rem;
+    gap: 0.6rem;
+    justify-content: space-between;
+}
+
+.card .info .details {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
 }
 
 .content .card .title {
