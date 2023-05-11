@@ -4,9 +4,11 @@
     --green1: #14b8a6;
     --green2: #3be188;
     --green3: #218550;
+    --green4: #10ae71;
     --red1: #ff5454;
     --red2: #f87171;
     --red3: #a71c1c;
+    --red4: #e95a5a;
     --orange1: #ff9a7c;
     --orange2: #ffb099;
     --orange3: #fdba74;
@@ -32,8 +34,10 @@
     --txt-btn: var(--dark1);
     --txt-error: var(--red1);
 
-    --clr-btn: var(--blue);
     --clr-svg: var(--dark1);
+    --clr-btn: var(--blue);
+    --clr-btn-status: var(--green4);
+    --clr-btn-red: var(--red4);
     --clr-input-label: var(--gray4);
     --clr-card-border: var(--orange4);
     --clr-modal-sep: var(--gray4);
@@ -147,7 +151,7 @@ button.action:active {
 }
 
 button.status {
-    background-color: var(--green1);
+    background-color: var(--clr-btn-status);
     color: var(--txt-light);
     font-size: var(--size-button);
     font-weight: 700;
@@ -162,11 +166,21 @@ button.status:hover {
 }
 
 button.status:active {
+    filter: brightness(90%);
     transform: translateY(6%);
 }
 
 button.red {
-    background-color: var(--red1);
+    background-color: var(--clr-btn-red);
+}
+
+button.trash:hover {
+    transform: translateY(-4%);
+    scale: 1.25;
+}
+
+button.trash:active {
+    transform: translateY(8%);
 }
 
 /*Classes*/
