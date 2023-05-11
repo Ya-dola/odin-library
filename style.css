@@ -22,7 +22,7 @@
     --gray4: #9fa3a8;
     --dark1: #3d3d3d;
     --dark2: #2a2a2a;
-    --dark3: #8f8f8f;
+    --dark3: #7c8084;
 
     --background: var(--gray1);
     --background-header-card: var(--white2);
@@ -31,6 +31,7 @@
 
     --txt-light: var(--white1);
     --txt-dark: var(--dark2);
+    --txt-secondary: var(--dark3);
     --txt-btn: var(--dark1);
     --txt-error: var(--red1);
 
@@ -222,7 +223,7 @@ button.trash:active {
     grid-auto-rows: 260px;
 }
 
-.content .card {
+.card {
     background-color: var(--background-header-card);
     box-shadow: var(--shadow-card);
     border-radius: 0.8rem;
@@ -230,10 +231,6 @@ button.trash:active {
     flex-flow: column nowrap;
     justify-content: space-between;
     gap: 0.6rem;
-}
-
-.content .card .trash {
-    align-self: flex-start;
 }
 
 .card .info {
@@ -250,7 +247,16 @@ button.trash:active {
     gap: 1rem;
 }
 
-.content .card .title {
+.card .details .author, .card .details .pages {
+    color: var(--txt-secondary);
+}
+
+
+.card .info .trash {
+    align-self: flex-start;
+}
+
+.card .details .title {
     padding-bottom: 0.4rem;
 }
 
