@@ -1,10 +1,12 @@
 :root {
     /*Dola Colour Palette*/
     --blue: #2d70de;
-    --green: #14b8a6;
+    --green1: #14b8a6;
+    --green2: #3be188;
+    --green3: #218550;
     --red1: #ff5454;
     --red2: #f87171;
-    --red3: #ff5757;
+    --red3: #a71c1c;
     --orange1: #ff9a7c;
     --orange2: #ffb099;
     --orange3: #fdba74;
@@ -35,6 +37,10 @@
     --clr-input-label: var(--gray4);
     --clr-card-border: var(--orange4);
     --clr-modal-sep: var(--gray4);
+    --clr-switch-bg-on: var(--green2);
+    --clr-switch-on: var(--green3);
+    --clr-switch-bg-off: var(--red2);
+    --clr-switch-off: var(--red3);
     --clr-footer: var(--orange2);
     --clr-overlay: rgba(0, 0, 0, 0.4);
 
@@ -82,7 +88,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    /*border: 1px var(--red3) solid;*/
+    /*border: 1px var(--red1) solid;*/
 }
 
 /*Elements*/
@@ -141,7 +147,7 @@ button.action:active {
 }
 
 button.status {
-    background-color: var(--green);
+    background-color: var(--green1);
     color: var(--txt-light);
     font-size: var(--size-button);
     font-weight: 700;
@@ -305,6 +311,59 @@ button.red {
     flex-flow: column nowrap;
     align-items: center;
     gap: 1rem;
+}
+
+.input-qs {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 4rem;
+    height: 2rem;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    background-color: var(--clr-switch-bg-off);
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    background-color: var(--clr-switch-off);
+    position: absolute;
+    content: "";
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 20px;
+    left: 0.3rem;
+    bottom: 0.25rem;
+    transition: all 0.3s cubic-bezier(0, 2.18, 0.64, 0.69);
+}
+
+input:checked + .slider {
+    background-color: var(--clr-switch-bg-on);
+}
+
+input:checked + .slider:before {
+    transform: translateX(1.9rem);
+    background-color: var(--clr-switch-on);
 }
 
 .overlay {
