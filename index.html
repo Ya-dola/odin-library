@@ -196,8 +196,8 @@
                 <a href="https://github.com/Ya-dola">Aadil Edition</a>
             </div>
         </footer>
-        <div class="modal">
-            <form class="form-modal add-book" id="addBookForm" action="#">
+        <div class="modal active">
+            <form class="form-modal add-book" id="addBookForm">
                 <h3 class="title">Add New Book</h3>
                 <div class="input-div">
                     <input type="text" id="input-title" name="input-title"
@@ -215,13 +215,13 @@
                     <label for="input-title">Pages</label>
                 </div>
                 <div class="input-qs">
-                    <label for="input-is-read">Have you read it?</label>
+                    <label for="input-is-read">Completed Reading?</label>
                     <input class="input-checkbox" type="checkbox"
                            id="input-is-read" name="input-is-read" required>
                 </div>
                 <button class="action" type="submit">Add Book</button>
             </form>
-            <div class="overlay" id="overlay"></div>
         </div>
+        <div class="overlay active" id="overlay"></div>
     </body>
 </html>

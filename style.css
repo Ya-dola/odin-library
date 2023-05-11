@@ -15,8 +15,10 @@
     --gray1: #dddfe4;
     --gray2: #c7ccd2;
     --gray3: #d4d6da;
+    --gray4: #9fa3a8;
     --dark1: #3d3d3d;
     --dark2: #2a2a2a;
+    --dark3: #8f8f8f;
 
     --background: var(--gray1);
     --background-header-card: var(--white2);
@@ -30,25 +32,25 @@
 
     --clr-btn: var(--blue);
     --clr-svg: var(--dark1);
-    --clr-search-bar: var(--gray3);
-    --clr-search-outline: var(--blue);
-    --clr-sidebar-svg: var(--white1);
+    --clr-input-label: var(--gray4);
     --clr-card-border: var(--orange4);
-    --clr-anncmnt-sep: var(--red2);
-    --clr-trending-sep: var(--gray2);
+    --clr-modal-sep: var(--gray4);
     --clr-footer: var(--orange2);
+    --clr-overlay: rgba(0, 0, 0, 0.4);
 
     --size-heading: 5rem;
     --size-txt: 1.125rem;
     --size-header-account: 1.4rem;
     --size-header-name: 1.6rem;
-    --size-sidebar-title: 1.75rem;
-    --size-sidebar-links: 1.25rem;
-    --size-sidebar-links-active: 1.5rem;
+    --size-form-label: 1.5rem;
+    --size-form-input: 1.75rem;
     --size-footers: 1rem;
     --size-button: 1.3rem;
 
     --weight-light: 300;
+    --weight-normal: 500;
+    --weight-bold: 700;
+    --weight-heavy: 900;
 
     --gap-sidebar: 1.2rem;
     --gap-trending: 1rem;
@@ -246,18 +248,36 @@ button.red {
     color: var(--txt-dark);
 }
 
+.modal {
+    background-color: var(--background-header-card);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 380px;
+    padding: 2rem;
+    border-radius: 2rem;
+    z-index: 1;
+    transition: all 0.16s ease-in-out;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
 .input-div {
     position: relative;
-    width: 40%;
-    margin-bottom: 1.4vmax;
+    width: 90%;
+    margin-top: 1.4rem;
 }
 
 .input-div input {
     width: 100%;
-    padding: 0.75vh 0;
-    /*font-size: var(--size-form-input);*/
+    padding: 0.6rem 0;
+    font-size: var(--size-form-input);
+    font-family: inherit;
     border: none;
-    border-bottom: 1px solid var(--txt-dark);
+    border-bottom: 1px var(--clr-modal-sep) solid;
     outline: none;
     background: transparent;
 }
@@ -265,16 +285,38 @@ button.red {
 .input-div label {
     position: absolute;
     top: 0;
-    left: 0;
-    padding: 0.75vh 0;
-    /*font-size: var(--size-form-label);*/
-    color: var(--txt-dark);
+    left: 2rem;
+    padding: 0.25rem 0;
+    font-size: var(--size-form-label);
+    font-weight: var(--weight-bold);
+    color: var(--clr-input-label);
     pointer-events: none;
     transition: all 0.2s ease-in-out;
 }
 
 .input-div input:focus ~ label,
 .input-div input:valid ~ label {
-    top: -1.6vmax;
+    top: -1.75rem;
     left: 0;
+}
+
+.form-modal {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--clr-overlay);
+}
+
+.overlay.active {
+    display: block;
 }
