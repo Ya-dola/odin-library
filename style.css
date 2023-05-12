@@ -35,7 +35,6 @@
     --txt-btn: var(--dark1);
     --txt-error: var(--red1);
 
-    --clr-svg: var(--dark1);
     --clr-btn: var(--blue);
     --clr-btn-status: var(--green4);
     --clr-btn-red: var(--red4);
@@ -69,6 +68,7 @@
     --pic-default-wh: 4rem;
 
     --url-icon: url(books.png);
+    --url-trash: url(trash.png);
 
     --icon-default-wh: 2.4rem;
     --icon-big-wh: 3rem;
@@ -114,23 +114,13 @@ body {
             'footer';
 }
 
-svg {
-    height: 2rem;
-    width: 2rem;
-    aspect-ratio: 1/1;
-}
-
-svg path {
-    fill: var(--clr-svg);
-}
-
 button {
     border: none;
     appearance: none;
     outline: none;
     background: none;
     cursor: pointer;
-    transition: all 0.12s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 button.action {
@@ -160,6 +150,7 @@ button.status {
     border-radius: 4rem 4rem 0 0;
     box-shadow: var(--shadow-btn-status);
     height: 8rem;
+    /*transition: all 0.18s cubic-bezier(0.5, -1.11, 0, 2.7);*/
 }
 
 button.status:hover {
@@ -216,7 +207,7 @@ button.trash:active {
     padding: 2rem;
 }
 
-.content .book-grid {
+.content .grid-books {
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -251,9 +242,14 @@ button.trash:active {
     color: var(--txt-secondary);
 }
 
-
 .card .info .trash {
     align-self: flex-start;
+}
+
+.card .info .trash .icon {
+    background: var(--url-trash) center center / contain no-repeat;
+    height: 2.25rem;
+    aspect-ratio: 1/1;
 }
 
 .card .details .title {
@@ -283,7 +279,7 @@ button.trash:active {
     padding: 2rem;
     border-radius: 2rem;
     z-index: 1;
-    transition: all 0.16s ease-in-out;
+    transition: all 0.12s ease-in-out;
     transform: translate(-50%, -50%) scale(0);
 }
 

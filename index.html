@@ -16,10 +16,10 @@
                     Yadola's Library
                 </h1>
             </div>
-            <button class="action">Add Book</button>
+            <button class="action" id="btnAddBook">Add Book</button>
         </header>
         <main class="content">
-            <div class="book-grid">
+            <div class="grid-books" id="gridBooks">
                 <div class="card">
                     <div class="info">
                         <div class="details">
@@ -34,9 +34,7 @@
                             </p>
                         </div>
                         <button class="trash">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
-                            </svg>
+                            <div class="icon"></div>
                         </button>
                     </div>
                     <button class="status">Completed</button>
@@ -55,9 +53,7 @@
                             </p>
                         </div>
                         <button class="trash">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
-                            </svg>
+                            <div class="icon"></div>
                         </button>
                     </div>
                     <button class="status red">Did Not Read</button>
@@ -76,9 +72,7 @@
                             </p>
                         </div>
                         <button class="trash">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
-                            </svg>
+                            <div class="icon"></div>
                         </button>
                     </div>
                     <button class="status">Completed</button>
@@ -97,9 +91,7 @@
                             </p>
                         </div>
                         <button class="trash">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
-                            </svg>
+                            <div class="icon"></div>
                         </button>
                     </div>
                     <button class="status red">Did Not Read</button>
@@ -118,9 +110,7 @@
                             </p>
                         </div>
                         <button class="trash">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
-                            </svg>
+                            <div class="icon"></div>
                         </button>
                     </div>
                     <button class="status">Completed</button>
@@ -139,51 +129,7 @@
                             </p>
                         </div>
                         <button class="trash">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <button class="status red">Did Not Read</button>
-                </div>
-                <div class="card">
-                    <div class="info">
-                        <div class="details">
-                            <h3 class="title">
-                                Card Title
-                            </h3>
-                            <p class="author">
-                                Card Author
-                            </p>
-                            <p class="pages">
-                                Card Pages
-                            </p>
-                        </div>
-                        <button class="trash">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <button class="status">Completed</button>
-                </div>
-                <div class="card">
-                    <div class="info">
-                        <div class="details">
-                            <h3 class="title">
-                                Card Title
-                            </h3>
-                            <p class="author">
-                                Card Author
-                            </p>
-                            <p class="pages">
-                                Card Pages
-                            </p>
-                        </div>
-                        <button class="trash">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
-                            </svg>
+                            <div class="icon"></div>
                         </button>
                     </div>
                     <button class="status red">Did Not Read</button>
@@ -196,29 +142,25 @@
                 <a href="https://github.com/Ya-dola">Aadil Edition</a>
             </div>
         </footer>
-        <div class="modal">
-            <form class="form-modal add-book" id="addBookForm">
+        <div class="modal" id="modalAddBook">
+            <form class="form-modal add-book" id="formAddBook">
                 <h2 class="title">Add New Book</h2>
                 <div class="input-div">
-                    <input type="text" id="input-title" name="input-title"
-                           maxlength="50" required>
-                    <label for="input-title">Title</label>
+                    <input type="text" id="inputTitle" maxlength="50" required>
+                    <label for="inputTitle">Title</label>
                 </div>
                 <div class="input-div">
-                    <input type="text" id="input-author" name="input-author"
-                           maxlength="50" required>
-                    <label for="input-title">Author</label>
+                    <input type="text" id="inputAuthor" maxlength="50" required>
+                    <label for="inputAuthor">Author</label>
                 </div>
                 <div class="input-div">
-                    <input type="number" id="input-pages" name="input-pages"
-                           maxlength="10000" required>
-                    <label for="input-title">Pages</label>
+                    <input type="number" id="inputPages" maxlength="10000" required>
+                    <label for="inputPages">Pages</label>
                 </div>
                 <div class="input-qs">
                     <h3 class="title">Completed Reading?</h3>
-                    <label class="switch" for="input-is-read">
-                        <input class="input-checkbox" type="checkbox"
-                               id="input-is-read" name="input-is-read">
+                    <label class="switch" for="inputReadStatus">
+                        <input class="input-checkbox" type="checkbox" id="inputReadStatus">
                         <span class="slider"></span>
                     </label>
                 </div>
