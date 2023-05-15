@@ -67,7 +67,7 @@ class Library {
 
 // CONSTANTS
 const classActive = "active";
-const errorMsgTitle = " - Book Already Exists";
+const errorMsgTitle = " - Book Exists";
 const statusReadTrue = "Completed";
 const statusReadFalse = "Did Not Read";
 const keyLocalStorage = 'library';
