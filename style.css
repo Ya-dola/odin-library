@@ -322,6 +322,10 @@ button.trash:active {
     left: 0;
 }
 
+.input-div label.error {
+    color: var(--txt-error);
+}
+
 .form-modal {
     display: flex;
     flex-flow: column nowrap;

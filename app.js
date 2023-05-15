@@ -61,7 +61,6 @@ class Library {
 
 // Variables
 
-
 // Constants
 const classActive = "active";
 
@@ -73,6 +72,11 @@ const overlay = document.getElementById('overlay');
 
 const modalAddBook = document.getElementById('modalAddBook');
 const formAddBook = document.getElementById('formAddBook');
+
+const inputTitle = document.getElementById('inputTitle');
+const inputAuthor = document.getElementById('inputAuthor');
+const inputPages = document.getElementById('inputPages');
+const inputReadStatus = document.getElementById('inputReadStatus');
 
 // Functions
 function openModalAddBook() {
@@ -87,12 +91,8 @@ function closeAllModals() {
 }
 
 function addCardBook() {
-    const inputTitle = document.getElementById('inputTitle').value;
-    const inputAuthor = document.getElementById('inputAuthor').value;
-    const inputPages = document.getElementById('inputPages').value;
-    const inputReadStatus = document.getElementById('inputReadStatus').checked;
-
-    const newBook = new Book(inputTitle, inputAuthor, inputPages, inputReadStatus);
+    const newBook = new Book(inputTitle.value, inputAuthor.value,
+                             inputPages.value, inputReadStatus.checked);
 
     library.addBook(newBook);
     createCardBook(newBook);
@@ -102,13 +102,11 @@ function deleteCardBook(bookTitle) {
     library.deleteBook(bookTitle);
 
     const deletedCard = document.getElementById(bookTitle);
-
     deletedCard ? deletedCard.remove() : console.log('Element Not Found');
 }
 
 function toggleReadStatus(bookTitle) {
     const selectedBook = library.findBook(bookTitle);
-
     const selectedBtnStatus =
         document.getElementById(bookTitle).querySelector('.status');
 
@@ -188,12 +186,22 @@ formAddBook.addEventListener('submit', (evt) => {
     // Prevent Default Submit Behaviour
     evt.preventDefault();
 
-    const inputTitle = document.getElementById('inputTitle').value;
-
-    if (!library.checkBookExists(inputTitle)) {
+    if (!library.checkBookExists(inputTitle.value)) {
         addCardBook();
         closeAllModals();
-    } // TODO - Show Error Msg
+    }
+});
+inputTitle.addEventListener('blur', () => {
+    const inputTitleLabel = document.getElementById('inputTitleLabel');
+
+    if (!library.checkBookExists(inputTitle.value)) {
+        inputTitleLabel.classList.remove('error');
+        inputTitleLabel.textContent = "Title";
+    }
+    else {
+        inputTitleLabel.classList.add('error');
+        inputTitleLabel.textContent += " - Book Already Exists";
+    }
 });
 window.addEventListener('keydown', (evt) => {
     if (evt.key === "Escape") closeAllModals();
