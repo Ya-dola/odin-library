@@ -1,4 +1,4 @@
-// Classes
+// CLASSES
 class Book {
     constructor(title = "",
                 author = "",
@@ -37,6 +37,10 @@ class Library {
         this._books = [];
     }
 
+    set books(value) {
+        this._books = value;
+    }
+
     get books() {
         return this._books;
     }
@@ -59,10 +63,14 @@ class Library {
     }
 }
 
-// Variables
+// VARIABLES
 
-// Constants
+// CONSTANTS
 const classActive = "active";
+const errorMsgTitle = " - Book Already Exists";
+const statusReadTrue = "Completed";
+const statusReadFalse = "Did Not Read";
+const keyLocalStorage = 'library';
 
 const library = new Library();
 
@@ -78,7 +86,7 @@ const inputAuthor = document.getElementById('inputAuthor');
 const inputPages = document.getElementById('inputPages');
 const inputReadStatus = document.getElementById('inputReadStatus');
 
-// Functions
+// FUNCTIONS
 function openModalAddBook() {
     formAddBook.reset();
     overlay.classList.add(classActive);
@@ -96,6 +104,8 @@ function addCardBook() {
 
     library.addBook(newBook);
     createCardBook(newBook);
+
+    saveData();
 }
 
 function deleteCardBook(bookTitle) {
@@ -103,6 +113,8 @@ function deleteCardBook(bookTitle) {
 
     const deletedCard = document.getElementById(bookTitle);
     deletedCard ? deletedCard.remove() : console.log('Element Not Found');
+
+    saveData();
 }
 
 function toggleReadStatus(bookTitle) {
@@ -113,13 +125,15 @@ function toggleReadStatus(bookTitle) {
     selectedBook.readStatus = !selectedBook.readStatus;
 
     if (selectedBook.readStatus) {
-        selectedBtnStatus.textContent = "Completed";
+        selectedBtnStatus.textContent = statusReadTrue;
         selectedBtnStatus.classList.remove("red");
     }
     else {
-        selectedBtnStatus.textContent = "Did Not Read";
+        selectedBtnStatus.textContent = statusReadFalse;
         selectedBtnStatus.classList.add("red");
     }
+
+    saveData();
 }
 
 function createCardBook(book) {
@@ -152,7 +166,7 @@ function createCardBook(book) {
     h3Title.textContent = book.title;
     pAuthor.textContent = book.author;
     pPages.textContent = book.pages;
-    btnStatus.textContent = book.readStatus ? "Completed" : "Did Not Read";
+    btnStatus.textContent = book.readStatus ? statusReadTrue : statusReadFalse;
 
     // Elements Event Listeners
     btnTrash.addEventListener('click', (evt) => {
@@ -177,11 +191,42 @@ function createCardBook(book) {
     gridBooks.appendChild(divCard);
 }
 
-// TODO - Save to Local Storage
+function resetGridBooks() {
+    // Reset Books Grid in case previous invalid data exists
+    gridBooks.innerHTML = "";
+}
 
-// Event Listeners
+// Data Management
+function saveData() {
+    saveDataLocal();
+}
+
+function displaySavedData() {
+    resetGridBooks();
+
+    for (let book of library.books) createCardBook(book);
+}
+
+// Local Storage
+function saveDataLocal() {
+    localStorage.setItem(keyLocalStorage, JSON.stringify(library.books));
+}
+
+function restoreDataLocal() {
+    const savedBooks = JSON.parse(localStorage.getItem(keyLocalStorage));
+
+    if (savedBooks) {
+        library.books = savedBooks.map(
+            (savedBook) => new Book(savedBook._title, savedBook._author,
+                                    savedBook._pages, savedBook._readStatus));
+    }
+    else library.books = [];
+}
+
+// EVENT LISTENERS
 btnAddBook.addEventListener('click', openModalAddBook);
 overlay.addEventListener('click', closeAllModals);
+
 formAddBook.addEventListener('submit', (evt) => {
     // Prevent Default Submit Behaviour
     evt.preventDefault();
@@ -191,6 +236,7 @@ formAddBook.addEventListener('submit', (evt) => {
         closeAllModals();
     }
 });
+
 inputTitle.addEventListener('blur', () => {
     const inputTitleLabel = document.getElementById('inputTitleLabel');
 
@@ -200,9 +246,15 @@ inputTitle.addEventListener('blur', () => {
     }
     else {
         inputTitleLabel.classList.add('error');
-        inputTitleLabel.textContent += " - Book Already Exists";
+        inputTitleLabel.textContent += errorMsgTitle;
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    restoreDataLocal();
+    displaySavedData();
+});
+
 window.addEventListener('keydown', (evt) => {
     if (evt.key === "Escape") closeAllModals();
 });
